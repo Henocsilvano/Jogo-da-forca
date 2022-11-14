@@ -1,13 +1,14 @@
 from random import choice
 
 
-lista_de_palavras = ['Entrevista', 'Desporto', 'Fantasia','Brincadeira','Susto','Saltitar','Desenvolvimento']
+lista_de_palavras = ['Entrevista','Desporto','Fantasia','Brincadeira','Susto','Saltitar','Desenvolvimento']
 
 print('~' * 40)
 print('JOGO DA FORCA'.center(40,'~'))
 print('~' * 40)
 
-palavra = choice(lista_de_palavras).upper()
+palavra = choice(lista_de_palavras).upper().split('')
+
 
 palavra_acertada = []
 
@@ -15,8 +16,9 @@ for letra in palavra:
     palavra_acertada.append('_')
 
 print('PALAVRA:')
-print(palavra_acertada)
-
+for letra in palavra_acertada:
+    print(f'\033[32m{letra}\033[m ', end='')
+print()
 erro = len(palavra_acertada) // 2
 acerto = False
 
@@ -34,7 +36,9 @@ while True:
         erro -= 1
         print('Errou...')
         
-    print(palavra_acertada)
+    for letra in palavra_acertada:
+        print(f'\033[32m{letra}\033[m ', end='')
+    print()
 
     if '_'  not in palavra_acertada:
         acerto = True
